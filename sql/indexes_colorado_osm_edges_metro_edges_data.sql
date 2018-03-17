@@ -1,13 +1,13 @@
-#
-# SQL to set the indexes on the full Edges, Nodes, and OD datasets
-#
+--
+-- SQL to set the indexes on the full Edges, Nodes, and OD datasets
+--
 
-# Load the data BEFORE running this SQL script
+-- Load the data BEFORE running this SQL script
 
-# Edges
+-- Edges
 ALTER TABLE colorado_osm_edges_metro_edges_data ADD COLUMN datetime timestamp without time zone;
 
-# From julian date to timestamp (do for both 2016 and 2017)
+-- From julian date to timestamp (do for both 2016 and 2017)
 UPDATE colorado_osm_edges_metro_edges_data set datetime = cast(timestamp '2015-12-31' + interval '1 day' * day  + interval '1 hour' * hour + interval '1 minute' * minute  as timestamp) where year = 2016;
 UPDATE colorado_osm_edges_metro_edges_data set datetime = cast(timestamp '2016-12-31' + interval '1 day' * day  + interval '1 hour' * hour + interval '1 minute' * minute  as timestamp) where year = 2017;
 
@@ -15,10 +15,10 @@ CREATE INDEX colorado_osm_edges_metro_edges_data_datetime_idx ON colorado_osm_ed
 CREATE INDEX colorado_osm_edges_metro_edges_data_id_idx ON colorado_osm_edges_metro_edges_data USING btree (edge_id);
 CREATE INDEX colorado_osm_edges_metro_edges_data_hour_idx ON colorado_osm_edges_metro_edges_data USING btree (hour);
 
-# Nodes
+-- Nodes
 ALTER TABLE colorado_osm_edges_metro_nodes_data ADD COLUMN datetime timestamp without time zone;
 
-# From julian date to timestamp (do for both 2016 and 2017)
+-- From julian date to timestamp (do for both 2016 and 2017)
 UPDATE colorado_osm_edges_metro_nodes_data set datetime = cast(timestamp '2015-12-31' + interval '1 day' * day  + interval '1 hour' * hour + interval '1 minute' * minute  as timestamp) where year = 2016;
 UPDATE colorado_osm_edges_metro_nodes_data set datetime = cast(timestamp '2016-12-31' + interval '1 day' * day  + interval '1 hour' * hour + interval '1 minute' * minute  as timestamp) where year = 2017;
 
@@ -26,10 +26,7 @@ CREATE INDEX colorado_osm_edges_metro_nodes_data_datetime_idx ON colorado_osm_ed
 CREATE INDEX colorado_osm_edges_metro_nodes_data_id_idx ON colorado_osm_edges_metro_nodes_data USING btree (node_id);
 CREATE INDEX colorado_osm_edges_metro_nodes_data_hour_idx ON colorado_osm_edges_metro_nodes_data USING btree (hour);
 
-ALTER TABLE colorado_osm_edges_nodes ADD CONSTRAINT pkey_colorado_osm_edges_nodes PRIMARY KEY (id);
-CREATE INDEX colorado_osm_edges_nodes_geom_idx ON colorado_osm_edges_nodes USING gist (the_geom);
-
-# OD
+-- OD
 ALTER TABLE colorado_osm_edges_metro_od_data ADD COLUMN datetime timestamp without time zone;
 UPDATE colorado_osm_edges_metro_od_data set datetime = cast(timestamp '2015-12-31' + interval '1 day' * day  + interval '1 hour' * hour + interval '1 minute' * minute  as timestamp) where year = 2016;
 UPDATE colorado_osm_edges_metro_od_data set datetime = cast(timestamp '2016-12-31' + interval '1 day' * day  + interval '1 hour' * hour + interval '1 minute' * minute  as timestamp) where year = 2017;
