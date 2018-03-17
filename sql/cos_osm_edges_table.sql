@@ -1,0 +1,21 @@
+CREATE TABLE cos_osm_edges (
+    id integer NOT NULL,
+    osm_id bigint,
+    osm_name character varying,
+    osm_meta character varying,
+    osm_source_id bigint,
+    osm_target_id bigint,
+    clazz integer,
+    flags integer,
+    source integer,
+    target integer,
+    km double precision,
+    kmh integer,
+    cost double precision,
+    reverse_cost double precision,
+    x1 double precision,
+    y1 double precision,
+    x2 double precision,
+    y2 double precision,
+    geom geometry(LineString,4326)
+);
