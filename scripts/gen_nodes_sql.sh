@@ -3,7 +3,7 @@
 # Generates SQL import script for Nodes CSV files
 #
 ST="co"
-ID="co_201701_201709_"
+ID="co_201701_201712_"
 echo "/* Generated on `date` */"
 for file in $ID*.csv ; do
     [ -e "$file" ] || continue
