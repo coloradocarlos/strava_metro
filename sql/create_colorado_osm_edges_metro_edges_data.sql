@@ -15,7 +15,7 @@ CREATE TABLE colorado_osm_edges_metro_nodes_data ( node_id integer, year integer
 
 -- OD
 DROP TABLE IF EXISTS colorado_osm_edges_metro_od_data;
-CREATE TABLE colorado_osm_edges_metro_od_data (polygon_id integer, year integer, day integer, hour integer, minute integer, commute integer, dest_polygon_id integer, intersected_polygons integer[]) WITH (OIDS=FALSE);
+CREATE TABLE colorado_osm_edges_metro_od_data (polygon_id integer, year integer, day integer, hour integer, minute integer, commute integer, dest_polygon_id integer, intersected_polygons integer[], distance integer, start_time timestamp without time zone, end_time timestamp without time zone, duration integer) WITH (OIDS=FALSE);
 
 -- Then copy data BEFORE creating indexes:
 -- See also copy_data.sh

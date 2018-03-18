@@ -19,9 +19,7 @@ The Security groups rules need to be setup to allow access to the RDS instance t
 
 The database is a PostgreSQL 9.6.6 on a db.t2.medium instance on a 250 GB SSD storage device.
 
-## Access:
-
-### Basics
+## Basics
 
 Database name: strava_metro
 
