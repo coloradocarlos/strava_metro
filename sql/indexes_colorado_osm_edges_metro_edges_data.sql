@@ -28,6 +28,8 @@ CREATE INDEX colorado_osm_edges_metro_nodes_data_hour_idx ON colorado_osm_edges_
 
 -- OD
 ALTER TABLE colorado_osm_edges_metro_od_data ADD COLUMN datetime timestamp without time zone;
+
+-- From julian date to timestamp (do for both 2016 and 2017)
 UPDATE colorado_osm_edges_metro_od_data set datetime = cast(timestamp '2015-12-31' + interval '1 day' * day  + interval '1 hour' * hour + interval '1 minute' * minute  as timestamp) where year = 2016;
 UPDATE colorado_osm_edges_metro_od_data set datetime = cast(timestamp '2016-12-31' + interval '1 day' * day  + interval '1 hour' * hour + interval '1 minute' * minute  as timestamp) where year = 2017;
 
