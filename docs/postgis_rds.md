@@ -114,6 +114,14 @@ $ psql -U $RUSER -h $RHOST -d strava_metro -f od_rollup.sql
 
 9) Create Colorado Springs specific OSM tables
 
+Copies a subset from colorado_ tables to cos_ tables.
+The geometry value in `\set cos_geom` is a bounding box for the city. Adjust accordingly.
+
+```bash
+$ cd ~/strava_metro/sql
+$ psql -U $RUSER -h $RHOST -d strava_metro -f create_cos_tables.sql
+```
+
 ## Usage
 
 TBD
