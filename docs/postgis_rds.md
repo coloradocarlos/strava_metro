@@ -122,6 +122,17 @@ $ cd ~/strava_metro/sql
 $ psql -U $RUSER -h $RHOST -d strava_metro -f create_cos_tables.sql
 ```
 
+10) Create permissions
+
+strava_metro=> CREATE ROLE user1 WITH LOGIN PASSWORD 'somepassword';
+strava_metro=> GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO user1;
+
+11) Add additional indexes to rollup tables
+
+```bash
+psql -U $RUSER -h $RHOST -d strava_metro -f indexes_rollup.sql 
+```
+
 ## Usage
 
 TBD
