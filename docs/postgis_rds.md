@@ -130,7 +130,8 @@ strava_metro=> GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO user1;
 11) Add additional indexes to rollup tables
 
 ```bash
-psql -U $RUSER -h $RHOST -d strava_metro -f indexes_rollup.sql 
+psql -U $RUSER -h $RHOST -d strava_metro -f indexes_rollup.sql
+psql -U $RUSER -h $RHOST -d srava_metro -c "GRANT ALL PRIVILEGES ON ALL TABLES IN SCHEMA public TO user1;"
 ```
 
 ## Usage
